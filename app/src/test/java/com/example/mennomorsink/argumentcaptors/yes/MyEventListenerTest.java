@@ -1,7 +1,4 @@
-package com.example.mennomorsink.argumentcaptors.yesssssss;
-
-import com.example.mennomorsink.argumentcaptors.yesssssss.EventProducer;
-import com.example.mennomorsink.argumentcaptors.yesssssss.MyEventListener;
+package com.example.mennomorsink.argumentcaptors.yes;
 
 import org.junit.Before;
 import org.junit.Test;

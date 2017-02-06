@@ -1,9 +1,7 @@
-package com.example.mennomorsink.argumentcaptors.nooooooo2;
+package com.example.mennomorsink.argumentcaptors.no1;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -12,12 +10,11 @@ public class MyEventListenerTest {
 
     private MyEventListener systemUnderTest;
 
-    @Mock
-    private EventProducer eventProducer;
+    private EventProducerMock eventProducer;
 
     @Before
     public void setUp() {
-        MockitoAnnotations.initMocks(this);
+        eventProducer = new EventProducerMock();
         systemUnderTest = new MyEventListener(eventProducer);
     }
 
@@ -25,8 +22,21 @@ public class MyEventListenerTest {
     public void testChangesStateOnEvent()  {
         assertThat(systemUnderTest.getState(), is("initial state"));
 
-        systemUnderTest.onEvent("sun is not shining!");
+        eventProducer.getListener().onEvent("sun is not shining!");
 
         assertThat(systemUnderTest.getState(), is("sun is not shining!"));
+    }
+
+    private class EventProducerMock extends EventProducer {
+        private Listener listener;
+
+        @Override
+        public void addListener(Listener listener) {
+            this.listener = listener;
+        }
+
+        Listener getListener() {
+            return listener;
+        }
     }
 }

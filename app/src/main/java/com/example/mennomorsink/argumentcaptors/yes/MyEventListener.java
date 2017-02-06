@@ -1,16 +1,12 @@
-package com.example.mennomorsink.argumentcaptors.nooooooo1;
+package com.example.mennomorsink.argumentcaptors.yes;
 
-/**
- * Created by mennomorsink on 03/01/2017.
- */
-
-public class MyEventListener {
+class MyEventListener {
 
     private EventProducer eventProducer;
 
     private String myState = "initial state";
 
-    public MyEventListener(EventProducer eventProducer) {
+    MyEventListener(EventProducer eventProducer) {
         this.eventProducer = eventProducer;
         registerForEvents();
     }
@@ -24,7 +20,7 @@ public class MyEventListener {
         });
     }
 
-    public String getState() {
+    String getState() {
         return myState;
     }
 }
